@@ -5,7 +5,7 @@ Chromedriver plugin for [asdf](https://github.com/asdf-vm/asdf) version manager
 ## Install
 
 ```
-asdf plugin-add chromedriver https://github.com/jakeva/asdf-chromedriver.git
+asdf plugin-add chromedriver https://github.com/robsdudeson/asdf-chromedriver.git
 ```
 
 ## Use
