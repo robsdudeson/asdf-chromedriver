@@ -8,12 +8,13 @@ install_chromedriver() {
   local install_path=$3
   local bin_install_path="$install_path/bin"
   local binary_path="$bin_install_path/chromedriver"
+  local zip_file_name="chromedriver_linux64.zip"
 
   CHROMEDRIVER_RELEASE=${version}
   echo "Getting Chromedriver version $CHROMEDRIVER_RELEASE"
   CHROMEDRIVER_VERSION=$(curl --location --fail --retry 3 http://chromedriver.storage.googleapis.com/LATEST_RELEASE_${CHROMEDRIVER_RELEASE})
   echo "Downloading Chromedriver version $CHROMEDRIVER_VERSION"
-  curl --silent --show-error --location --fail --retry 3 --output /tmp/chromedriver_mac64.zip "http://chromedriver.storage.googleapis.com/$CHROMEDRIVER_VERSION/chromedriver_mac64.zip"
+  curl --silent --show-error --location --fail --retry 3 --output /tmp/$zip_file_name "http://chromedriver.storage.googleapis.com/$CHROMEDRIVER_VERSION/$zip_file_name"
 
   echo "Creating bin directory $bin_install_path"
   mkdir -p "${bin_install_path}"
@@ -23,8 +24,8 @@ install_chromedriver() {
 
   echo "Copying binary"
   cd /tmp
-  unzip chromedriver_mac64.zip
-  rm -rf chromedriver_mac64.zip
+  unzip $zip_file_name
+  rm -rf $zip_file_name
   mv chromedriver ${bin_install_path}
   chmod +x ${binary_path}
 }
